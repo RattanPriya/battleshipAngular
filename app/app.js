@@ -1,10 +1,8 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('grid', [
+angular.module('battleshipGame', [
   'ngRoute',
-  'templateStore.view1',
-  'templateStore.view2',
   'templateStore.templates',
   'templateStore.battleship'
 ]).
