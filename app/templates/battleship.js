@@ -6,5 +6,6 @@ angular.module('templateStore.battleship', ['ngRoute'])
     })
 }])
 .controller('battleshipCtrl', ['$scope', '$http', function($scope, $http) {
-
+	$scope.board1 = [1,1,1,1,1]
+	$scope.board2 = [0,1,1,1,0]
 }])

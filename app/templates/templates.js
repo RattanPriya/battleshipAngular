@@ -1,3 +1,7 @@
+function Board(shipArray) {
+    return [];
+}
+
 angular.module('templateStore.templates', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/templates', {
@@ -6,15 +10,16 @@ angular.module('templateStore.templates', ['ngRoute'])
 }])
 
 .controller('gridController', ['$scope', '$http', function($scope) {
-    $scope.hello ="priya";
-    $scope.board = [];
     $scope.size = 5;
     $scope.counter = $scope.size * 3;
     $scope.SHIP_UNATTACKED = 1;
     $scope.SHIP_ATTACKED = 2;
     $scope.SHIP_NOT_THERE=0;
     $scope.SHIP_NOT_THERE_ATTACKED = 3;
+
      $scope.init = function(shipArray) {
+        $scope.board = new Board(shipArray);
+
         for (var i = 0; i < $scope.size; i++) {
             $scope.board[i] = [0, 0, 0, 0, 0];
         }
@@ -62,6 +67,10 @@ angular.module('templateStore.templates', ['ngRoute'])
     return {
         restrict : "E",
         templateUrl : 'templates/grid.html',
-        controller : "gridController"
+        controller : "gridController",
+        controllerAs : "grid",
+        scope : {
+            shipArray : "="
+        }
     };
 })
